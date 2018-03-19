@@ -22,12 +22,12 @@ module Api
           end
 
           def update
-            @product = Product.find(params[:id])
+            @product = Product.where(id: params[:id]).first
 
             if @product.update(product_params)
               render json: @products, status: 200
             else
-              render json: {errors: product.errors }, status: 422
+              render json: {errors: @prod.errors }, status: 422
             end
           end
 
